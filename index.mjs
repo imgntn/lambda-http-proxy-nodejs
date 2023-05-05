@@ -1,5 +1,6 @@
 import axios from "axios";
 import { URL } from "url";
+import validator from "validator";
 
 // Rate limiting configuration
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
@@ -11,13 +12,30 @@ const RESTRICTED_TO_URL = "retro.umoiq.com";
 const CHECK_ORIGIN = false;
 const ALLOWED_ORIGINS = ["www.something.com", "www.website.com"];
 
+const sanitizeHeaders = (headers) => {
+  const sanitizedHeaders = {};
+  for (const key in headers) {
+    if (headers.hasOwnProperty(key)) {
+      const value = headers[key];
+      sanitizedHeaders[validator.escape(key)] = validator.escape(value);
+    }
+  }
+  return sanitizedHeaders;
+};
 export const handler = async (event) => {
   console.log("Received event:", JSON.stringify(event));
 
-  const method = event.httpMethod;
+  const method = event.httpMethod; // Make sure the 'method' variable is defined
+
   const originalUrl = event.queryStringParameters.url;
+  if (!validator.isURL(originalUrl)) {
+    return {
+      statusCode: 400,
+      body: "Invalid URL",
+    };
+  }
   const parsedUrl = new URL(originalUrl);
-  const headers = event.headers || {};
+  const headers = sanitizeHeaders(event.headers || {});
   const body = event.body || null;
 
   // Check if the requested URL contains the desired domain
