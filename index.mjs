@@ -12,9 +12,9 @@ export const handler = async (event) => {
 
   // Remove the 'url' key from the queryStringParameters
   const { url, ...otherParams } = event.queryStringParameters;
-
+  const RESTRICTED_TO_URL = "retro.umoiq.com";
   // Check if the requested URL contains the desired domain
-  if (!url.includes("retro.umoiq.com")) {
+  if (!url.includes(RESTRICTED_TO_URL)) {
     return {
       statusCode: 403,
       body: "Invalid domain. Proxy is only allowed for retro.umoiq.com",
