@@ -4,7 +4,7 @@ Minimalist Node.js HTTP proxy as AWS Lambda Function for easy cross-origin resou
 
 ## About
 
-This Lambda function acts as a proxy for HTTP requests. It forwards incoming requests to the target URL and returns the response. The function includes rate limiting to prevent abuse and has the option to restrict traffic to specific origins.
+This Lambda function acts as a proxy for HTTP requests. It forwards incoming requests to the target URL and returns the response. The function includes rate limiting to prevent abuse and has the option to restrict traffic to specific origins. Useful for when you want to wrap an external API that is missing CORS.
 
 ## Features
 
