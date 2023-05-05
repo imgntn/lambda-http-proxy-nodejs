@@ -13,6 +13,14 @@ export const handler = async (event) => {
   // Remove the 'url' key from the queryStringParameters
   const { url, ...otherParams } = event.queryStringParameters;
 
+  // Check if the requested URL contains the desired domain
+  if (!url.includes("retro.umoiq.com")) {
+    return {
+      statusCode: 403,
+      body: "Invalid domain. Proxy is only allowed for retro.umoiq.com",
+    };
+  }
+
   // Combine the original URL's query parameters and the additional parameters
   const allParams = {
     ...otherParams,
