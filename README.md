@@ -1,6 +1,6 @@
-# Lambda HTTP Proxy
+# Lambda HTTP Proxy Node.js
 
-Minimalist HTTP proxy as AWS Lambda Function for easy cross-origin resource sharing 🌐
+Minimalist Node.js HTTP proxy as AWS Lambda Function for easy cross-origin resource sharing 🌐
 
 ## About
 
@@ -11,6 +11,10 @@ This Lambda function acts as a proxy for HTTP requests. It forwards incoming req
 - Rate limiting based on the client's IP address
 - Optional origin check to restrict traffic to specific domains
 - Supports both text-based and binary content
+
+## Cloud Setup
+
+Please see [How To Setup AWS](other_file.md)
 
 ## Configuration
 
