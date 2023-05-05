@@ -1,5 +1,9 @@
 # Lambda HTTP Proxy
 
+Minimalist HTTP proxy as AWS Lambda Function for easy cross-origin resource sharing 🌐
+
+## About
+
 This Lambda function acts as a proxy for HTTP requests. It forwards incoming requests to the target URL and returns the response. The function includes rate limiting to prevent abuse and has the option to restrict traffic to specific origins.
 
 ## Features
